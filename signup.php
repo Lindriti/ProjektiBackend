@@ -1,49 +1,41 @@
-<?php include_once 'header.php';?>
+<?php include_once 'header.php'; ?>
 <body>
     <div class="container">
         <div class="w-50 mx-auto" style="margin: 100px auto;">
-            <h1 class="mb-5">Please sign in</h1>
+            <h1 class="mb-5">Register</h1>
 
-<form action="signupLogic.php" method="POST">
+            <form action="signupLogic.php" method="POST">
+                <div class="form-outline mb-4">
+                    <input type="text" class="form-control" name="name" required />
+                    <label class="form-label">Name</label>
+                </div>
 
-  <!-- Name input -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="form2Example3" class="form-control" name = "name"/>
-    <label class="form-label" for="form2Example3">Name</label>
-  </div>
+                <div class="form-outline mb-4">
+                    <input type="text" class="form-control" name="surname" required />
+                    <label class="form-label">Surname</label>
+                </div>
 
-  <!-- Surname input -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="form2Example2" class="form-control" name = "surname"/>
-    <label class="form-label" for="form2Example2">Surname</label>
-  </div>
+                <div class="form-outline mb-4">
+                    <input type="text" class="form-control" name="username" required />
+                    <label class="form-label">Username</label>
+                </div>
 
-  <!-- Username input -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="form2Example2" class="form-control" name = "username"/>
-    <label class="form-label" for="form2Example2">Username</label>
-  </div>
+                <div class="form-outline mb-4">
+                    <input type="email" class="form-control" name="email" required />
+                    <label class="form-label">Email</label>
+                </div>
 
-  <!-- Email input -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" name = "email"/>
-    <label class="form-label" for="form2Example1">Email address</label>
-  </div>
+                <div class="form-outline mb-4">
+                    <input type="password" class="form-control" name="password" required />
+                    <label class="form-label">Password</label>
+                </div>
 
-  <!-- Password input -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
+                <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Register</button>
 
-  <!-- Submit button -->
-  <button  type="submit" name="sumit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
-
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Have an account? <a href="login.php">Sign In</a></p>
-  </div>
-  </form>
-  </div>
-  </div>
-<?php include_once 'footer.php';?>
+                <div class="text-center">
+                    <p>Already have an account? <a href="login.php">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php include_once 'footer.php'; ?>

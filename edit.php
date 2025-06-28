@@ -1,31 +1,38 @@
 <?php
-    include_once 'config.php';
-    $id = $_GET['id'];
+include_once 'config.php';
 
-    $sql = "SELECT * FROM users WHERE id=:id";
+$id = $_GET['id'];
 
-    $prep = $conn->prepare($sql);
-    $prep->bindParam(":id", $id);
-   
-    $prep->execute();
+$sql = "SELECT * FROM users WHERE id = :id";
 
-    $data = $prep->fetch();
+$prep = $conn->prepare($sql);
+$prep->bindParam(":id", $id);
+$prep->execute();
 
+$data = $prep->fetch();
+
+if (!$data) {
+    echo "User not found!";
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit User</title>
     <style>
-        form>input {
+        form > input {
             margin-bottom: 10px;
             font-size: 20px;
             padding: 5px;
+            width: 100%;
+            max-width: 400px;
         }
-        button{
-            background:none;
+        button, input[type="submit"] {
+            background: none;
             border: solid 1px black;
             padding: 10px 40px;
             font-size: 20px;
@@ -35,11 +42,21 @@
 </head>
 <body>
     <form action="update.php" method="POST">
-        <input type="hidden" name="id" placeholder="Name" value="<?php echo $data['id'] ?>"><br>
-        <input type="text" name="name" placeholder="Name" value="<?php echo $data['name'] ?>"><br>
-        <input type="text" name="surname" placeholder="surname" value="<?php echo $data['surname'] ?>"><br>
-        <input type="email" name="email" placeholder="Email" value="<?php echo $data['email'] ?>"><br>
-        <input type="submit" name="submit"></input>
-    </form>
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($data['id']); ?>">
+
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Enter name" value="<?php echo htmlspecialchars($data['name']); ?>"><br><br>
+
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" name="surname" placeholder="Enter surname" value="<?php echo htmlspecialchars($data['surname']); ?>"><br><br>
+
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" placeholder="Enter username" value="<?php echo htmlspecialchars($data['username']); ?>"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter email" value="<?php echo htmlspecialchars($data['email']); ?>"><br><br>
+
+    <input type="submit" name="submit" value="Update">
+</form>
 </body>
 </html>

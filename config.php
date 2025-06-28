@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 
     $user = "root";
     $pass = "";
@@ -8,6 +11,6 @@ session_start();
 
     try{
         $conn = new PDO("mysql:host=$server;dbname=$dbname", $user, $pass);
-    } catch (PDOExeption $e){
+    } catch (PDOException $e){
         echo "error: " . $e->getMessage();
     }
