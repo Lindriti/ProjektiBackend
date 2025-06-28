@@ -72,7 +72,8 @@ if ($page === 'orders' && isset($_GET['delete_order'])) {
 }
 
 if ($page === 'orders') {
-    $sql = "SELECT o.id, o.order_date, u.name AS user_name, b.name AS bread_name, b.photo AS bread_photo, b.price AS bread_price 
+    $sql = "SELECT o.id, o.order_date, u.name AS user_name, 
+                   b.name AS bread_name, b.photo AS bread_photo, b.price AS bread_price 
             FROM orders o
             JOIN users u ON o.user_id = u.id
             JOIN bread b ON o.bread_id = b.id
@@ -98,7 +99,7 @@ if ($page === 'bread') {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        $message = "Bread deleted.";
+        $message = "Items deleted.";
     }
 
     if (isset($_POST['add']) || isset($_POST['update'])) {
@@ -317,7 +318,7 @@ if ($page === 'bread') {
                 <?php endif; ?>
             </div>
             <button type="submit" name="<?= $editBread ? 'update' : 'add' ?>" class="btn btn-<?= $editBread ? 'warning' : 'primary' ?>">
-                <?= $editBread ? 'Update Bread' : 'Add Food' ?>
+                <?= $editBread ? 'Update Food' : 'Add Food' ?>
             </button>
             <?php if ($editBread): ?>
                 <a href="dashboard.php?page=bread" class="btn btn-secondary ms-2">Cancel</a>

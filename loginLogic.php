@@ -47,4 +47,3 @@ if ($stmt->rowCount() == 1) {
     header("refresh:3; url=login.php");
     exit;
 }
-?>

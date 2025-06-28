@@ -42,11 +42,14 @@ $breads = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<!-- Navbar me logout -->
+<!-- Navbar me logout dhe my orders si butona -->
 <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <span class="navbar-brand mb-0 h1">Welcome, <?= htmlspecialchars($_SESSION['name']) ?></span>
-        <a href="logout.php" class="btn btn-outline-light">Logout</a>
+        <div>
+            <a href="my_orders.php" class="btn btn-outline-light me-2">My Orders</a>
+            <a href="logout.php" class="btn btn-outline-light">Logout</a>
+        </div>
     </div>
 </nav>
 
